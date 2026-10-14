@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111827">
+  <title>Tabata Timer V1.2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">V1.2</p>
+        <h1>Tabata Timer</h1>
+      </div>
+      <div class="status-dot" aria-label="Ready"></div>
+    </header>
+
+    <section class="timer-card" aria-live="polite">
+      <div id="phaseLabel" class="phase rest">READY</div>
+      <div id="timer" class="timer" role="timer">00:20</div>
+      <div id="roundLabel" class="round-label">Round 1 of 8</div>
+      <div id="exerciseLabel" class="exercise-display" aria-live="polite"></div>
+      <div class="progress-track" aria-hidden="true">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+    </section>
+
+    <section class="controls-card" aria-label="Timer settings">
+      <div class="settings-grid">
+        <label>
+          <span>Work (sec)</span>
+          <input id="workInput" type="number" min="1" max="599" value="20" inputmode="numeric">
+        </label>
+        <label>
+          <span>Rest (sec)</span>
+          <input id="restInput" type="number" min="1" max="599" value="10" inputmode="numeric">
+        </label>
+        <label>
+          <span>Rounds</span>
+          <input id="roundsInput" type="number" min="1" max="99" value="8" inputmode="numeric">
+        </label>
+        <label>
+          <span>Prep (sec)</span>
+          <input id="prepInput" type="number" min="0" max="99" value="10" inputmode="numeric">
+        </label>
+      </div>
+
+      <div class="button-row">
+        <button id="startBtn" class="btn primary">Start</button>
+        <button id="pauseBtn" class="btn secondary" disabled>Pause</button>
+        <button id="resetBtn" class="btn secondary">Reset</button>
+      </div>
+
+      <div class="audio-row">
+        <button id="soundBtn" class="sound-btn" type="button" aria-pressed="true">🔊 Beep on</button>
+        <button id="voiceBtn" class="sound-btn" type="button" aria-pressed="true">🗣️ Voice on</button>
+      </div>
+      <p class="audio-note">Voice cues: “Right, Get Ready to Work”, round + exercise, “Work”, “Time for a Rest”, and “Great workout, you're all done”.</p>
+    </section>
+
+    <section class="exercise-card" aria-label="Exercise plan">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">WORKOUT PLAN</p>
+          <h2>Exercises by round</h2>
+        </div>
+      </div>
+      <p class="exercise-help">Add an exercise for each round. During the workout, the app will announce the round and exercise name about 3 seconds before work begins.</p>
+      <div id="exerciseList" class="exercise-list"></div>
+    </section>
+
+    <section class="presets-card" aria-label="Saved workout timers">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">MY WORKOUTS</p>
+          <h2>Saved timers</h2>
+        </div>
+        <span id="presetCount" class="preset-count">0 saved</span>
+      </div>
+
+      <div class="save-row">
+        <input id="presetNameInput" type="text" maxlength="40" placeholder="e.g. Strength Circuit" aria-label="Workout name">
+        <button id="savePresetBtn" class="btn primary">Save timer</button>
+      </div>
+
+      <div id="presetList" class="preset-list" aria-live="polite"></div>
+      <p id="presetMessage" class="preset-message" role="status"></p>
+    </section>
+
+    <footer>Tabata Timer V1.2 • Runs in your browser</footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
